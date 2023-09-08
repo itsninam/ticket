@@ -1,5 +1,10 @@
 const HomePage = ({ children }) => {
-  return <header>{children}</header>;
+  return (
+    <header>
+      <p>Home</p>
+      {children}
+    </header>
+  );
 };
 
 export default HomePage;
