@@ -1,8 +1,10 @@
+import TicketSearch from "../Components/TicketSearch";
+
 const HomePage = ({ children }) => {
   return (
     <header>
       <p>Home</p>
-      {children}
+      <TicketSearch />
     </header>
   );
 };
