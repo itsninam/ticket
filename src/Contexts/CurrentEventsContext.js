@@ -19,7 +19,7 @@ const CurrentEventsProvider = ({ children }) => {
             const { latitude, longitude } = position.coords;
 
             const response = await fetch(
-              `https://api.seatgeek.com/2/events?lat=${latitude}&lon=${longitude}&per_page=100&client_id=${apiKey}`
+              `https://api.seatgeek.com/2/events?lat=${latitude}&lon=${longitude}&per_page=200&client_id=${apiKey}&sort=score.desc`
             );
 
             if (!response.ok) {

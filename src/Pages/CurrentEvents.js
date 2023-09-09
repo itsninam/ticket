@@ -21,6 +21,13 @@ const CurrentEvents = () => {
     return <p>{errorMessage}</p>;
   }
 
+  const formatDate = (date) => {
+    let month = new Date(date).toLocaleString("default", { month: "short" });
+    let day = new Date(date).getDate();
+
+    return `${month} ${day}`;
+  };
+
   return (
     <>
       {currentEvents.length > 0 && (
@@ -36,7 +43,7 @@ const CurrentEvents = () => {
                         key={event.id}
                         image={event.performers[0].image}
                         eventName={event.short_title}
-                        date={event.datetime_local}
+                        date={formatDate(event.datetime_local)}
                         location={event.venue.city}
                       />
                     );
