@@ -1,11 +1,11 @@
 import "./App.css";
+import { Routes, Route } from "react-router";
+
 import NavBar from "./Components/NavBar";
 import HomePage from "./Pages/HomePage";
 import SellTickets from "./Pages/SellTickets";
 import Support from "./Pages/Support";
 import Account from "./Pages/Account";
-
-import { Routes, Route } from "react-router";
 
 function App() {
   return (
