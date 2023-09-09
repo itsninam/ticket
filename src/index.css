@@ -13,9 +13,18 @@ li {
   list-style: none;
 }
 
+ul {
+  padding: 0px;
+}
+
 a {
   text-decoration: none;
   color: #000;
+}
+
+img {
+  display: block;
+  max-height: 100%;
 }
 
 .wrapper {
@@ -35,4 +44,14 @@ nav {
   display: flex;
   align-items: center;
   gap: 24px;
+}
+
+/* Current Events */
+.current-events-list {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  overflow: scroll;
+  scrollbar-width: none;
 }

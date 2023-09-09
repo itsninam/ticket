@@ -6,17 +6,20 @@ import HomePage from "./Pages/HomePage";
 import SellTickets from "./Pages/SellTickets";
 import Support from "./Pages/Support";
 import Account from "./Pages/Account";
+import { CurrentEventsProvider } from "./Contexts/CurrentEventsContext";
 
 function App() {
   return (
     <div className="wrapper">
       <NavBar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="sell-tickets" element={<SellTickets />} />
-        <Route path="support" element={<Support />} />
-        <Route path="account" element={<Account />} />
-      </Routes>
+      <CurrentEventsProvider>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="sell-tickets" element={<SellTickets />} />
+          <Route path="support" element={<Support />} />
+          <Route path="account" element={<Account />} />
+        </Routes>
+      </CurrentEventsProvider>
     </div>
   );
 }
