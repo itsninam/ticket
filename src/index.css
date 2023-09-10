@@ -1,3 +1,9 @@
+:root {
+  --color-grey-100: #ced4da;
+  --color-grey-200: #6b7280;
+  --color-grey-300: #0c0f0a;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -20,7 +26,7 @@ ul {
 
 a {
   text-decoration: none;
-  color: #000;
+  color: var(--color-grey-300);
 }
 
 img {
@@ -31,6 +37,19 @@ img {
 .wrapper {
   width: 85%;
   margin: 0 auto;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--color-grey-300);
 }
 
 /* Nav bar */
@@ -85,11 +104,28 @@ nav {
 }
 
 .date-location {
-  color: gray;
+  color: var(--color-grey-200);
 }
 
 .flex-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.buttons-container {
+  border: 1px solid var(--color-grey-100);
+  padding: 8px;
+  border-radius: 24px;
+  display: flex;
+  gap: 16px;
+}
+
+.icon {
+  color: var(--color-grey-200);
+}
+
+.icon:active,
+.icon:focus {
+  color: var(--color-grey-300);
 }

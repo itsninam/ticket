@@ -20,9 +20,20 @@ const CurrentEvents = () => {
   // Source for approach: https://stackoverflow.com/a/66977283
   const eventCardRef = useRef({});
 
-  const handleNext = (eventsListContainer) => {
-    const el = eventCardRef.current[eventsListContainer];
-    el.scrollLeft += 100;
+  const onhandleNextCard = (eventsListContainer) => {
+    const eventsContainer = eventCardRef.current[eventsListContainer];
+    eventsContainer.scrollBy({
+      left: 420,
+      behavior: "smooth",
+    });
+  };
+
+  const onhandlePrevCard = (eventsListContainer) => {
+    const eventsContainer = eventCardRef.current[eventsListContainer];
+    eventsContainer.scrollBy({
+      left: -420,
+      behavior: "smooth",
+    });
   };
 
   if (isLoading) {
@@ -40,7 +51,8 @@ const CurrentEvents = () => {
           <EventCardContainer key={category.title}>
             <EventCardHeader
               header={category.title}
-              onClick={() => handleNext(category.title)}
+              onhandleNextCard={() => onhandleNextCard(category.title)}
+              onhandlePrevCard={() => onhandlePrevCard(category.title)}
             />
             <EventCardList
               id={category.title}

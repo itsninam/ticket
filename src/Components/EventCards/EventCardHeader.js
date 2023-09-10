@@ -1,8 +1,18 @@
-const EventCardHeader = ({ header, onClick }) => {
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
+
+const EventCardHeader = ({ header, onhandlePrevCard, onhandleNextCard }) => {
   return (
     <div className="flex-container">
       <h3>{header}</h3>
-      <button onClick={onClick}>NExt</button>
+      <div className="buttons-container">
+        <button onClick={onhandlePrevCard}>
+          <FontAwesomeIcon icon={faAngleLeft} className="icon" />
+        </button>
+        <button onClick={onhandleNextCard}>
+          <FontAwesomeIcon icon={faAngleRight} className="icon" />
+        </button>
+      </div>
     </div>
   );
 };

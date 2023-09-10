@@ -9,7 +9,7 @@ const HomePage = () => {
         <TicketSearch />
       </header>
       <main>
-        <h2>Current Events in your area</h2>
+        <h2>Upcoming events in your area</h2>
         <CurrentEvents />
       </main>
     </>
