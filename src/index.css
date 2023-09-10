@@ -54,12 +54,11 @@ nav {
   gap: 40px;
   width: 100%;
   overflow: scroll;
-  scrollbar-width: none;
 }
 
 .event-card {
   cursor: pointer;
-  height: 400px;
+  height: 350px;
   min-width: 380px;
 }
 
@@ -87,4 +86,10 @@ nav {
 
 .date-location {
   color: gray;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

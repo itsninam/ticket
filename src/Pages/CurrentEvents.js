@@ -1,8 +1,11 @@
-import React, { useContext } from "react";
-
-import EventCard from "../Components/EventCard";
-import LoadingSpinner from "../Components/LoadingSpinner";
+import React, { useRef, useContext } from "react";
 import { CurrentEventsContext } from "../Contexts/CurrentEventsContext";
+
+import LoadingSpinner from "../Components/LoadingSpinner";
+import EventCardContainer from "../Components/EventCards/EventCardContainer";
+import EventCardHeader from "../Components/EventCards/EventCardHeader";
+import EventCard from "../Components/EventCards/EventCard";
+import EventCardList from "../Components/EventCards/EventCardList";
 
 const CurrentEvents = () => {
   const {
@@ -11,50 +14,54 @@ const CurrentEvents = () => {
     errorMessage,
     filterEventCategories,
     categories,
+    formatDate,
   } = useContext(CurrentEventsContext);
+
+  // Source for approach: https://stackoverflow.com/a/66977283
+  const eventCardRef = useRef({});
+
+  const handleNext = (eventsListContainer) => {
+    const el = eventCardRef.current[eventsListContainer];
+    el.scrollLeft += 100;
+  };
 
   if (isLoading) {
     return <LoadingSpinner />;
   }
 
-  if (errorMessage) {
+  if (errorMessage || !currentEvents.length) {
     return <p>{errorMessage}</p>;
   }
 
-  const formatDate = (date) => {
-    let month = new Date(date).toLocaleString("default", { month: "short" });
-    let day = new Date(date).getDate();
-
-    return `${month} ${day}`;
-  };
-
   return (
-    <>
-      {currentEvents.length > 0 && (
-        <section>
-          {categories.map((category) => {
-            return (
-              <React.Fragment key={category.title}>
-                <h3>{category.title}</h3>
-                <ul className="current-events-list">
-                  {filterEventCategories(category.type).map((event) => {
-                    return (
-                      <EventCard
-                        key={event.id}
-                        image={event.performers[0].image}
-                        eventName={event.short_title}
-                        date={formatDate(event.datetime_local)}
-                        location={event.venue.city}
-                      />
-                    );
-                  })}
-                </ul>
-              </React.Fragment>
-            );
-          })}
-        </section>
-      )}
-    </>
+    <section>
+      {categories.map((category) => {
+        return (
+          <EventCardContainer key={category.title}>
+            <EventCardHeader
+              header={category.title}
+              onClick={() => handleNext(category.title)}
+            />
+            <EventCardList
+              id={category.title}
+              ref={(el) => (eventCardRef.current[category.title] = el)}
+            >
+              {filterEventCategories(category.type).map((event) => {
+                return (
+                  <EventCard
+                    key={event.id}
+                    image={event.performers[0].image}
+                    eventName={event.short_title}
+                    date={formatDate(event.datetime_local)}
+                    location={event.venue.city}
+                  />
+                );
+              })}
+            </EventCardList>
+          </EventCardContainer>
+        );
+      })}
+    </section>
   );
 };
 
