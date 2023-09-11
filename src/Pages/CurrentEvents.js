@@ -1,5 +1,6 @@
 import React, { useRef, useContext } from "react";
 import { CurrentEventsContext } from "../Contexts/CurrentEventsContext";
+import { useFormatDate } from "../Common/useFormatDate";
 
 import LoadingSpinner from "../Components/LoadingSpinner";
 import EventCardContainer from "../Components/EventCards/EventCardContainer";
@@ -8,13 +9,14 @@ import EventCard from "../Components/EventCards/EventCard";
 import EventCardList from "../Components/EventCards/EventCardList";
 
 const CurrentEvents = () => {
+  const { formatDate } = useFormatDate();
+
   const {
     currentEvents,
     isLoading,
     errorMessage,
     filterEventCategories,
     categories,
-    formatDate,
   } = useContext(CurrentEventsContext);
 
   // Source for approach: https://stackoverflow.com/a/66977283

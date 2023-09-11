@@ -78,13 +78,6 @@ const CurrentEventsProvider = ({ children }) => {
     },
   ];
 
-  const formatDate = (date) => {
-    let month = new Date(date).toLocaleString("default", { month: "short" });
-    let day = new Date(date).getDate();
-
-    return `${month} ${day}`;
-  };
-
   return (
     <CurrentEventsContext.Provider
       value={{
@@ -93,7 +86,6 @@ const CurrentEventsProvider = ({ children }) => {
         errorMessage,
         categories,
         filterEventCategories,
-        formatDate,
       }}
     >
       {children}
