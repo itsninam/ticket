@@ -1,12 +1,14 @@
 import { createContext, useState } from "react";
+import useNavigateToPage from "../Hooks/useNavigateToPage";
 
 const SearchEventsContext = createContext();
 
 const SearchEventsProvider = ({ children }) => {
-  const [searchEvents, setSearchEvents] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
   const [userInput, setUserInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const { navigateToPage } = useNavigateToPage();
 
   const apiKey = "MzY0Mjk1NjN8MTY5NDEzNzY5OS41ODgyNzU";
 
@@ -22,10 +24,11 @@ const SearchEventsProvider = ({ children }) => {
         console.log(response.status);
         setErrorMessage("Something went wrong with finding events");
         setIsLoading(false);
+        console.log(errorMessage);
       } else {
         const data = await response.json();
-        setSearchEvents(data.events);
-        console.log(data);
+        setSearchResults(data.events);
+        console.log(data.events);
         setIsLoading(false);
 
         if (!data.events.length) {
@@ -42,13 +45,17 @@ const SearchEventsProvider = ({ children }) => {
   const handleSearchEvents = (event) => {
     event.preventDefault();
 
+    if (!userInput) return;
+
     fetchEvents();
+    navigateToPage("/results");
+    setUserInput("");
   };
 
   return (
     <SearchEventsContext.Provider
       value={{
-        searchEvents,
+        searchResults,
         isLoading,
         errorMessage,
         userInput,

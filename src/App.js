@@ -8,6 +8,7 @@ import Support from "./Pages/Support";
 import Account from "./Pages/Account";
 import { CurrentEventsProvider } from "./Contexts/CurrentEventsContext";
 import { SearchEventsProvider } from "./Contexts/SearchEventsContext";
+import SearchResults from "./Pages/SearchResults";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="sell-tickets" element={<SellTickets />} />
             <Route path="support" element={<Support />} />
             <Route path="account" element={<Account />} />
+            <Route path="results" element={<SearchResults />} />
           </Routes>
         </SearchEventsProvider>
       </CurrentEventsProvider>

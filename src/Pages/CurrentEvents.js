@@ -1,12 +1,12 @@
 import React, { useRef, useContext } from "react";
 import { CurrentEventsContext } from "../Contexts/CurrentEventsContext";
-import { useFormatDate } from "../Common/useFormatDate";
 
 import LoadingSpinner from "../Components/LoadingSpinner";
 import EventCardContainer from "../Components/EventCards/EventCardContainer";
 import EventCardHeader from "../Components/EventCards/EventCardHeader";
 import EventCard from "../Components/EventCards/EventCard";
 import EventCardList from "../Components/EventCards/EventCardList";
+import useFormatDate from "../Hooks/useFormatDate";
 
 const CurrentEvents = () => {
   const { formatDate } = useFormatDate();
