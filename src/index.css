@@ -129,3 +129,8 @@ nav {
 .icon:focus {
   color: var(--color-grey-300);
 }
+
+/* Ticket search */
+.search-form {
+  flex: 0 0 75%;
+}

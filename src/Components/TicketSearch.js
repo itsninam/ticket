@@ -6,7 +6,7 @@ const TicketSearch = () => {
     useContext(SearchEventsContext);
 
   return (
-    <form action="" onSubmit={handleSearchEvents}>
+    <form action="" onSubmit={handleSearchEvents} className="search-form">
       <label htmlFor="search">Search event</label>
       <input
         type="text"

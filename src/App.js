@@ -13,9 +13,9 @@ import SearchResults from "./Pages/SearchResults";
 function App() {
   return (
     <div className="wrapper">
-      <NavBar />
-      <CurrentEventsProvider>
-        <SearchEventsProvider>
+      <SearchEventsProvider>
+        <NavBar />
+        <CurrentEventsProvider>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="sell-tickets" element={<SellTickets />} />
@@ -23,8 +23,8 @@ function App() {
             <Route path="account" element={<Account />} />
             <Route path="results" element={<SearchResults />} />
           </Routes>
-        </SearchEventsProvider>
-      </CurrentEventsProvider>
+        </CurrentEventsProvider>
+      </SearchEventsProvider>
     </div>
   );
 }
