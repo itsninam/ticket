@@ -10,7 +10,10 @@ const NavBar = () => {
   return (
     <nav>
       <Logo />
-      {currentLocation !== "/" && <TicketSearch />}
+      {currentLocation !== "/support" && currentLocation !== "/" && (
+        <TicketSearch />
+      )}
+
       <AppNav />
     </nav>
   );
