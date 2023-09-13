@@ -30,9 +30,11 @@ const SearchEventsProvider = ({ children }) => {
         setSearchResults(data.events);
         console.log(data.events);
         setIsLoading(false);
+        setErrorMessage("");
 
         if (!data.events.length) {
           setErrorMessage("No events found");
+          console.log("hello");
         }
       }
     } catch (error) {
