@@ -4,11 +4,10 @@ import CurrentEvents from "./CurrentEvents";
 const HomePage = () => {
   return (
     <>
-      <header>
-        <p>Home</p>
+      <header className="header">
         <TicketSearch />
       </header>
-      <main>
+      <main className="main-events">
         <h2>Upcoming events in your area</h2>
         <CurrentEvents />
       </main>

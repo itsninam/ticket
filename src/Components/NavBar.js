@@ -4,15 +4,13 @@ import Logo from "./Logo";
 import TicketSearch from "./TicketSearch";
 
 const NavBar = () => {
-  const location = useLocation();
-  const currentLocation = location.pathname;
+  const { pathname } = useLocation();
+  const navClass = pathname === "/" ? "nav-home" : "nav-bar";
 
   return (
-    <nav>
+    <nav className={navClass}>
       <Logo />
-      {currentLocation !== "/support" && currentLocation !== "/" && (
-        <TicketSearch />
-      )}
+      {pathname !== "/support" && pathname !== "/" && <TicketSearch />}
 
       <AppNav />
     </nav>
