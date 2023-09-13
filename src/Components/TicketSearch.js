@@ -17,7 +17,7 @@ const TicketSearch = () => {
         value={userInput}
         onChange={(event) => setUserInput(event.target.value)}
       />
-      <span class="material-icons">search</span>
+      <span className="material-icons">search</span>
     </form>
   );
 };
