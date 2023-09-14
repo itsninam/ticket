@@ -41,6 +41,7 @@ button {
   background: none;
   border: none;
   cursor: pointer;
+  border: 1px solid red;
 }
 
 h1,
@@ -268,4 +269,28 @@ nav {
 /* Ticket search */
 .search-form {
   flex: 0 0 60%;
+}
+
+/* Sell Tickets */
+.action-btn {
+  border: 1px solid var(--color-grey-100);
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+.sell-ticket-form {
+  border: 1px solid var(--color-grey-100);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.sell-ticket-form label {
+  display: block;
+}
+
+.sell-ticket-form input {
+  margin-bottom: 16px;
+  padding: 8px;
+  height: 24px;
+  width: 90%;
 }

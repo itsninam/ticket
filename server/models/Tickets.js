@@ -5,14 +5,12 @@ const TicketSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  eventLocation: {
-    type: Object,
-    city: {
-      type: String,
-    },
-    country: {
-      type: String,
-    },
+  eventCity: {
+    type: String,
+    required: true,
+  },
+  eventCountry: {
+    type: String,
     required: true,
   },
   eventPrice: {

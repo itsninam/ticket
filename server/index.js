@@ -2,8 +2,10 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const TicketModel = require("./models/Tickets");
+const cors = require("cors");
 
 app.use(express.json());
+app.use(cors());
 
 mongoose.connect(
   "mongodb+srv://moancea:pass123@cluster0.rqwd12p.mongodb.net/TicketWonder?retryWrites=true&w=majority"

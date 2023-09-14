@@ -1,7 +1,9 @@
+import SellTicketForm from "../Components/SellTicketForm";
+
 const SellTickets = () => {
   return (
     <section>
-      <p>Sell Tickets</p>
+      <SellTicketForm />
     </section>
   );
 };
