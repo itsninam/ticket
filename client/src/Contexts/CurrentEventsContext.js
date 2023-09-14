@@ -57,12 +57,12 @@ const CurrentEventsProvider = ({ children }) => {
 
   const categories = [
     {
-      type: "mlb",
-      title: "Sports",
-    },
-    {
       type: "concert",
       title: "Concerts",
+    },
+    {
+      type: "mlb",
+      title: "Sports",
     },
     {
       type: "comedy",
