@@ -1,4 +1,5 @@
 import { SearchEventsContext } from "../Contexts/SearchEventsContext";
+import Input from "./Input";
 import { useContext } from "react";
 
 const TicketSearch = () => {
@@ -7,10 +8,10 @@ const TicketSearch = () => {
 
   return (
     <form action="" onSubmit={handleSearchEvents} className="search-form">
-      <label htmlFor="search" className="sr-only">
-        Search event or city
-      </label>
-      <input
+      <Input
+        htmlFor="search"
+        labelText="Search event or city"
+        className="sr-only"
         type="text"
         id="search"
         placeholder="Search for an event"

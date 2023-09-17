@@ -1,63 +1,73 @@
 import { useContext } from "react";
 import { SellTicketContext } from "../Contexts/SellTicketContext";
+import Input from "./Input";
 
 const SellTicket = () => {
-  const { handleAddTicketSubmit, handleInputChange, userInput } =
-    useContext(SellTicketContext);
+  const {
+    handleAddTicketSubmit,
+    handleInputChange,
+    userInput,
+    handleCloseForm,
+  } = useContext(SellTicketContext);
 
   return (
     <form onSubmit={handleAddTicketSubmit} className="sell-ticket-form">
-      <label htmlFor="eventName">Event Name</label>
-      <input
+      <Input
+        htmlFor="eventName"
+        labelText="Event Name"
         type="text"
         id="eventName"
         name="eventName"
         value={userInput.eventName}
         onChange={handleInputChange}
-        required
       />
 
-      <label htmlFor="eventCity">City </label>
-      <input
+      <Input
+        htmlFor="eventCity"
+        labelText="City"
         type="text"
         id="eventCity"
         name="eventCity"
         value={userInput.eventCity}
         onChange={handleInputChange}
-        required
       />
 
-      <label htmlFor="eventCountry">Country</label>
-      <input
+      <Input
+        htmlFor="eventCountry"
+        labelText="Country"
         type="text"
         id="eventCountry"
         name="eventCountry"
         value={userInput.eventCountry}
         onChange={handleInputChange}
-        required
       />
 
-      <label htmlFor="eventPrice">Price</label>
-      <input
+      <Input
+        htmlFor="eventPrice"
+        labelText="Price"
         type="number"
         id="eventPrice"
         name="eventPrice"
         value={userInput.eventPrice}
         onChange={handleInputChange}
-        required
       />
 
-      <label htmlFor="eventDate">Date</label>
-      <input
+      <Input
+        htmlFor="eventDate"
+        labelText="Date"
         type="date"
         id="eventDate"
         name="eventDate"
         value={userInput.eventDate}
         onChange={handleInputChange}
-        required
       />
 
-      <button className="action-btn">Submit</button>
+      <button className="action-btn" type="submit">
+        Submit
+      </button>
+      <button className="action-btn" onClick={handleCloseForm} type='button'>
+        Cancel
+      </button>
     </form>
   );
 };

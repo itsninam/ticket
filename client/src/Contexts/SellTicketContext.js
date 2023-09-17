@@ -50,8 +50,12 @@ const SellTicketProvider = ({ children }) => {
     setUserInput({ ...userInput, [name]: value });
   };
 
-  const handleFormOpen = () => {
-    setIsFormOpen(!isFormOpen);
+  const handleOpenForm = () => {
+    setIsFormOpen(true);
+  };
+
+  const handleCloseForm = () => {
+    setIsFormOpen(false);
   };
 
   return (
@@ -62,7 +66,8 @@ const SellTicketProvider = ({ children }) => {
         handleAddTicketSubmit,
         handleInputChange,
         tickets,
-        handleFormOpen,
+        handleOpenForm,
+        handleCloseForm,
         isFormOpen,
       }}
     >
