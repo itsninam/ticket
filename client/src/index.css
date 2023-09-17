@@ -272,6 +272,9 @@ nav {
 }
 
 /* Sell Tickets */
+.sell-ticket-section {
+  position: relative;
+}
 .action-btn {
   border: 1px solid var(--color-grey-100);
   padding: 8px 16px;
@@ -282,6 +285,10 @@ nav {
   border: 1px solid var(--color-grey-100);
   border-radius: 8px;
   padding: 16px;
+  box-shadow: 0px 3px 13px -11px rgba(0, 0, 0, 0.4);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .sell-ticket-form label {
