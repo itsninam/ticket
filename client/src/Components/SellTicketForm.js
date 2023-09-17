@@ -20,6 +20,7 @@ const SellTicket = () => {
         name="eventName"
         value={userInput.eventName}
         onChange={handleInputChange}
+        required
       />
 
       <Input
@@ -30,6 +31,7 @@ const SellTicket = () => {
         name="eventCity"
         value={userInput.eventCity}
         onChange={handleInputChange}
+        required
       />
 
       <Input
@@ -40,6 +42,7 @@ const SellTicket = () => {
         name="eventCountry"
         value={userInput.eventCountry}
         onChange={handleInputChange}
+        required
       />
 
       <Input
@@ -50,6 +53,7 @@ const SellTicket = () => {
         name="eventPrice"
         value={userInput.eventPrice}
         onChange={handleInputChange}
+        required
       />
 
       <Input
@@ -60,12 +64,13 @@ const SellTicket = () => {
         name="eventDate"
         value={userInput.eventDate}
         onChange={handleInputChange}
+        required
       />
 
       <button className="action-btn" type="submit">
         Submit
       </button>
-      <button className="action-btn" onClick={handleCloseForm} type='button'>
+      <button className="action-btn" onClick={handleCloseForm} type="button">
         Cancel
       </button>
     </form>
