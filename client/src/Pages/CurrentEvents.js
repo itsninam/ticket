@@ -6,6 +6,7 @@ import EventCardContainer from "../Components/EventCards/EventCardContainer";
 import EventCardHeader from "../Components/EventCards/EventCardHeader";
 import EventCard from "../Components/EventCards/EventCard";
 import EventCardList from "../Components/EventCards/EventCardList";
+import NoEventAvailable from "../Components/EventCards/NoEventAvailable";
 import useFormatDate from "../Hooks/useFormatDate";
 
 const CurrentEvents = () => {
@@ -71,6 +72,7 @@ const CurrentEvents = () => {
                   />
                 );
               })}
+              <NoEventAvailable category={category} />
             </EventCardList>
           </EventCardContainer>
         );
