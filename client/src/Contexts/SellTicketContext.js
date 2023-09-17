@@ -14,6 +14,7 @@ const SellTicketProvider = ({ children }) => {
 
   const [tickets, setTickets] = useState([]);
   const [userInput, setUserInput] = useState(userInputInitialValues);
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
   useEffect(() => {
     axios.get("http://localhost:3001/getTickets").then((response) => {
@@ -40,11 +41,17 @@ const SellTicketProvider = ({ children }) => {
         setTickets([...tickets, newTicket]);
         setUserInput({ ...userInputInitialValues });
       });
+
+    setIsFormOpen(!isFormOpen);
   };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUserInput({ ...userInput, [name]: value });
+  };
+
+  const handleFormOpen = () => {
+    setIsFormOpen(!isFormOpen);
   };
 
   return (
@@ -55,6 +62,8 @@ const SellTicketProvider = ({ children }) => {
         handleAddTicketSubmit,
         handleInputChange,
         tickets,
+        handleFormOpen,
+        isFormOpen,
       }}
     >
       {children}
