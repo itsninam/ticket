@@ -1,15 +1,15 @@
-import "./App.css";
 import { Routes, Route } from "react-router";
+import { CurrentEventsProvider } from "./Contexts/CurrentEventsContext";
+import { SearchEventsProvider } from "./Contexts/SearchEventsContext";
+import { SellTicketProvider } from "./Contexts/SellTicketContext";
 
+import "./App.css";
 import NavBar from "./Components/NavBar";
 import HomePage from "./Pages/HomePage";
 import SellTickets from "./Pages/SellTickets";
 import Support from "./Pages/Support";
 import Account from "./Pages/Account";
 import SearchResults from "./Pages/SearchResults";
-import { CurrentEventsProvider } from "./Contexts/CurrentEventsContext";
-import { SearchEventsProvider } from "./Contexts/SearchEventsContext";
-import { SellTicketProvider } from "./Contexts/SellTicketContext";
 
 function App() {
   return (

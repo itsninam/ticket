@@ -1,4 +1,4 @@
-import React, { useRef, useContext } from "react";
+import { useRef, useContext } from "react";
 import { CurrentEventsContext } from "../Contexts/CurrentEventsContext";
 
 import LoadingSpinner from "../Components/LoadingSpinner";

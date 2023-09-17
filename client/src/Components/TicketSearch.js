@@ -1,6 +1,7 @@
 import { SearchEventsContext } from "../Contexts/SearchEventsContext";
-import Input from "./Input";
 import { useContext } from "react";
+
+import Input from "./Input";
 
 const TicketSearch = () => {
   const { userInput, setUserInput, handleSearchEvents } =

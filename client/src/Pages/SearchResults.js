@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { SearchEventsContext } from "../Contexts/SearchEventsContext";
+
 import LoadingSpinner from "../Components/LoadingSpinner";
 import SearchResultItem from "../Components/SearchResultItem";
 
