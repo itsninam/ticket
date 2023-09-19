@@ -1,14 +1,23 @@
 import { useContext } from "react";
 import { SellTicketContext } from "../Contexts/SellTicketContext";
+import LoadingSpinner from "./LoadingSpinner";
 
 const TicketUpload = () => {
-  const { tickets } = useContext(SellTicketContext);
+  const { tickets, isLoading, statusMessage } = useContext(SellTicketContext);
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
   return (
-    <ul>
-      {tickets.map((ticket) => {
-        return <li key={ticket._id}>{ticket.eventName}</li>;
-      })}
-    </ul>
+    <>
+      <p>{statusMessage}</p>
+      <ul>
+        {tickets.map((ticket) => {
+          return <li key={ticket._id}>{ticket.eventName}</li>;
+        })}
+      </ul>
+    </>
   );
 };
 

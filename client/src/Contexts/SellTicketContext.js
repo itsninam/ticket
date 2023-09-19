@@ -1,27 +1,26 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useMemo } from "react";
 import axios from "axios";
 
 const SellTicketContext = createContext();
 
 const SellTicketProvider = ({ children }) => {
-  const userInputInitialValues = {
-    eventName: "",
-    eventCity: "",
-    eventCountry: "",
-    eventPrice: "",
-    eventDate: "",
-  };
+  const userInputInitialValues = useMemo(
+    () => ({
+      eventName: "",
+      eventCity: "",
+      eventCountry: "",
+      eventPrice: "",
+      eventDate: "",
+    }),
+    []
+  );
 
   const [tickets, setTickets] = useState([]);
   const [userInput, setUserInput] = useState(userInputInitialValues);
   const [isFormOpen, setIsFormOpen] = useState(false);
-
-  useEffect(() => {
-    axios.get("http://localhost:3001/getTickets").then((response) => {
-      console.log(response.data);
-      setTickets(response.data);
-    });
-  }, []);
+  const [isLoading, setIsLoading] = useState(true);
+  const [statusMessage, setStatusMessage] = useState("");
+  const [ticketAdded, setTicketAdded] = useState(false);
 
   const handleAddTicketSubmit = (event) => {
     event.preventDefault();
@@ -38,12 +37,49 @@ const SellTicketProvider = ({ children }) => {
       .post("http://localhost:3001/createTicket", newTicket)
       .then((response) => {
         console.log("User created");
-        setTickets([...tickets, newTicket]);
-        setUserInput({ ...userInputInitialValues });
+
+        if (!tickets.length) {
+          setIsLoading(true);
+        }
+
+        if (response.status === 200) {
+          // setTickets([...tickets, newTicket]);
+          setUserInput({ ...userInputInitialValues });
+          setStatusMessage("");
+          setTicketAdded(true);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        setStatusMessage("Something went wrong with adding events");
       });
 
     setIsFormOpen(!isFormOpen);
   };
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3001/getTickets")
+      .then((response) => {
+        console.log(response.statusText);
+        setIsLoading(true);
+
+        if (response.status === 200) {
+          setTickets(response.data);
+          setIsLoading(false);
+
+          if (!response.data.length) {
+            setStatusMessage("Your events will appear here");
+          }
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+
+        setStatusMessage("Something went wrong with finding events");
+        setIsLoading(false);
+      });
+  }, [ticketAdded]);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -69,6 +105,8 @@ const SellTicketProvider = ({ children }) => {
         handleOpenForm,
         handleCloseForm,
         isFormOpen,
+        isLoading,
+        statusMessage,
       }}
     >
       {children}
