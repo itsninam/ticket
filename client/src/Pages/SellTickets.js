@@ -4,7 +4,7 @@ import { SellTicketContext } from "../Contexts/SellTicketContext";
 import SellTicketForm from "../Components/SellTicketForm";
 import TicketUpload from "../Components/TicketUpload";
 import SellTicketCardList from "../Components/SellTicketInfo/SellTicketCardList";
-import UploadTicket from "../Components/UploadTicket";
+import UploadTicketBtn from "../Components/UploadTicketBtn";
 
 const SellTickets = () => {
   const { isFormOpen } = useContext(SellTicketContext);
@@ -13,7 +13,7 @@ const SellTickets = () => {
     <section className="sell-ticket-section">
       <SellTicketCardList />
       {isFormOpen && <SellTicketForm />}
-      <UploadTicket />
+      <UploadTicketBtn />
       <TicketUpload />
     </section>
   );
