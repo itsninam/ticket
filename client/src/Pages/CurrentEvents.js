@@ -47,6 +47,10 @@ const CurrentEvents = () => {
     return <p>{errorMessage}</p>;
   }
 
+  const onClick = (event) => {
+    console.log(event);
+  };
+
   return (
     <section>
       {categories.map((category) => {
@@ -64,6 +68,7 @@ const CurrentEvents = () => {
               {filterEventCategories(category.type).map((event) => {
                 return (
                   <EventCard
+                    event={event.id}
                     key={event.id}
                     image={event.performers[0].image}
                     eventName={event.short_title}

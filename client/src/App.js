@@ -10,6 +10,7 @@ import SellTickets from "./Pages/SellTickets";
 import Support from "./Pages/Support";
 import Account from "./Pages/Account";
 import SearchResults from "./Pages/SearchResults";
+import EventDetails from "./Pages/EventDetails";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
               <Route path="support" element={<Support />} />
               <Route path="account" element={<Account />} />
               <Route path="results" element={<SearchResults />} />
+              <Route path="event-details/:id" element={<EventDetails />} />
             </Routes>
           </CurrentEventsProvider>
         </SellTicketProvider>
