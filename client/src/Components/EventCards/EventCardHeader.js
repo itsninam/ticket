@@ -6,10 +6,18 @@ const EventCardHeader = ({ header, onhandlePrevCard, onhandleNextCard }) => {
     <div className="flex-container">
       <h3>{header}</h3>
       <div className="buttons-container">
-        <button onClick={onhandlePrevCard}>
+        <button
+          onClick={onhandlePrevCard}
+          role="button"
+          aria-label="Previous Event"
+        >
           <FontAwesomeIcon icon={faAngleLeft} className="icon" />
         </button>
-        <button onClick={onhandleNextCard}>
+        <button
+          onClick={onhandleNextCard}
+          role="button"
+          aria-label="Next Event"
+        >
           <FontAwesomeIcon icon={faAngleRight} className="icon" />
         </button>
       </div>

@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 const EventCard = ({ image, eventName, date, location, onClick, event }) => {
   return (
-    <Link to={`event-details/${event}`}>
-      <li className="event-card" onClick={onClick}>
+    <li className="event-card" onClick={onClick}>
+      <Link to={`event-details/${event}`}>
         <span className="image-container">
           <img src={image} alt={eventName} />
         </span>
@@ -11,8 +11,8 @@ const EventCard = ({ image, eventName, date, location, onClick, event }) => {
         <span className="date-location">
           {date} &#x2022; {location}
         </span>
-      </li>
-    </Link>
+      </Link>
+    </li>
   );
 };
 

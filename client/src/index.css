@@ -353,7 +353,7 @@ nav {
   box-shadow: 0px 3px 13px -11px rgba(0, 0, 0, 0.4);
 }
 
-.sell-tickets-card h4 {
+.sell-tickets-card h2 {
   color: var(--color-grey-300);
   font-size: 20px;
 }

@@ -17,12 +17,10 @@ const EventDetails = () => {
     return <LoadingSpinner />;
   }
 
-  console.log(chosenEvent);
-
   return (
     <div className="event-details">
       <div className="event-information">
-        <h3>{chosenEvent.short_title}</h3>
+        <h2>{chosenEvent.short_title}</h2>
         <p>
           {formatDate(chosenEvent.datetime_local)} at{" "}
           {formatTime(chosenEvent.datetime_local)} &#x2022;{" "}
