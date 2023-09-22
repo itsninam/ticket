@@ -2,7 +2,7 @@
   --color-grey-100: #ced4da;
   --color-grey-200: #6b7280;
   --color-grey-300: #0c0f0a;
-  --color-accent: #591f0a;
+  --color-accent: #7209b7;
 }
 
 body {
@@ -275,10 +275,19 @@ nav {
 .sell-ticket-section {
   position: relative;
 }
+
 .action-btn {
   border: 1px solid var(--color-grey-100);
   padding: 8px 16px;
   border-radius: 8px;
+  transition: 0.3s;
+  font-weight: bolder;
+}
+
+.action-btn:hover {
+  background-color: #f2ebfb;
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
 }
 
 .form-container {
@@ -320,19 +329,11 @@ nav {
   border: none;
 }
 
-.upload-btn {
-  border: 1px solid var(--color-grey-100);
+.sell-ticket-section .action-btn:not(.form-container .action-btn) {
   width: 100%;
-  padding: 24px;
+  padding: 16px;
   font-size: 20px;
-  transition: 0.5s;
-  border-radius: 8px;
-}
-
-.upload-btn:hover {
-  background-color: var(--color-grey-100);
-  opacity: 0.9;
-  color: var(--color-grey-300);
+  margin-top: 24px;
 }
 
 /* Sell Tickets Card */
@@ -361,4 +362,21 @@ nav {
   height: 50px;
   width: 50px;
   color: var(--color-accent);
+}
+
+/* Event details */
+.event-details {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  color: var(--color-grey-200);
+}
+
+.event-details .event-information .action-btn {
+  margin-top: 16px;
+  display: inline-block;
+}
+
+.event-details img {
+  height: 400px;
 }

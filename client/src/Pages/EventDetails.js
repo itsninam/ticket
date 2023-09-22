@@ -1,32 +1,48 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { CurrentEventsContext } from "../Contexts/CurrentEventsContext";
 import LoadingSpinner from "../Components/LoadingSpinner";
+import useFormatDate from "../Hooks/useFormatDate";
+import useFormatTime from "../Hooks/useFormatTime";
 
 const EventDetails = () => {
+  const { formatDate } = useFormatDate();
+  const { formatTime } = useFormatTime();
   const { currentEvents, isLoading } = useContext(CurrentEventsContext);
   let { id } = useParams();
 
-  const chosenEvent = currentEvents.find((event) => event.id == id);
-  console.log(chosenEvent);
+  const chosenEvent = currentEvents.find((event) => event.id === Number(id));
 
-  if (isLoading) {
+  if (isLoading || !chosenEvent) {
     return <LoadingSpinner />;
   }
 
-  if (!chosenEvent) {
-    return <p>Event not found</p>;
-  }
+  console.log(chosenEvent);
 
   return (
-    <>
-      <p>{chosenEvent.short_title}</p>
-      <p>${chosenEvent.stats.average_price}</p>
+    <div className="event-details">
+      <div className="event-information">
+        <h3>{chosenEvent.short_title}</h3>
+        <p>
+          {formatDate(chosenEvent.datetime_local)} at{" "}
+          {formatTime(chosenEvent.datetime_local)} &#x2022;{" "}
+          {chosenEvent.venue.name}, {chosenEvent.venue.display_location}
+        </p>
+        <p>Avergage price: ${chosenEvent.stats.average_price}</p>
+        <a
+          href={chosenEvent.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="action-btn"
+        >
+          Find Tickets
+        </a>
+      </div>
       <img
         src={chosenEvent.performers[0].images.huge}
         alt={chosenEvent.short_title}
       />
-    </>
+    </div>
   );
 };
 

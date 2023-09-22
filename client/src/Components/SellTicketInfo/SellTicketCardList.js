@@ -1,15 +1,13 @@
-import { useState } from "react";
 import sellTickets from "./sellTickets";
 import SellTicketCard from "./SellTicketCard";
 
 const SellTicketCardList = () => {
-  const [ticketInfo, setTicketInfo] = useState(sellTickets);
-
   return (
     <ul className="sell-tickets-card-list">
-      {ticketInfo.map((info) => {
+      {sellTickets.map((info) => {
         return (
           <SellTicketCard
+            key={info.id}
             headerTitle={info.headerTitle}
             icon={info.icon}
             description={info.description}

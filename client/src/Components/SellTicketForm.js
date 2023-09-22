@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { SellTicketContext } from "../Contexts/SellTicketContext";
 
 import Input from "./Input";
+import ActionBtn from "./ActionBtn";
 
 const SellTicket = () => {
   const {
@@ -70,16 +71,12 @@ const SellTicket = () => {
         />
 
         <div className="buttons-container">
-          <button className="action-btn" type="submit">
-            Submit
-          </button>
-          <button
-            className="action-btn"
-            onClick={handleCloseForm}
+          <ActionBtn buttonText="Submit" type="submit" />
+          <ActionBtn
+            buttonText="Cancel"
             type="button"
-          >
-            Cancel
-          </button>
+            onClick={handleCloseForm}
+          />
         </div>
       </form>
     </div>

@@ -47,10 +47,6 @@ const CurrentEvents = () => {
     return <p>{errorMessage}</p>;
   }
 
-  const onClick = (event) => {
-    console.log(event);
-  };
-
   return (
     <section>
       {categories.map((category) => {
