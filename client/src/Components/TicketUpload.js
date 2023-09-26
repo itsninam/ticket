@@ -3,7 +3,13 @@ import { SellTicketContext } from "../Contexts/SellTicketContext";
 import LoadingSpinner from "./LoadingSpinner";
 
 const TicketUpload = () => {
-  const { tickets, isLoading, statusMessage } = useContext(SellTicketContext);
+  const {
+    tickets,
+    isLoading,
+    statusMessage,
+    handleRemoveUploadedTicket,
+    handleEditUploadedTicket,
+  } = useContext(SellTicketContext);
 
   if (isLoading) {
     return <LoadingSpinner />;
@@ -14,7 +20,17 @@ const TicketUpload = () => {
       <p>{statusMessage}</p>
       <ul>
         {tickets.map((ticket) => {
-          return <li key={ticket._id}>{ticket.eventName}</li>;
+          return (
+            <li key={ticket._id}>
+              {ticket.eventName}
+              <button onClick={() => handleRemoveUploadedTicket(ticket)}>
+                delete
+              </button>
+              <button onClick={() => handleEditUploadedTicket(ticket)}>
+                edit
+              </button>
+            </li>
+          );
         })}
       </ul>
     </>

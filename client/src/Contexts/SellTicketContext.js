@@ -94,6 +94,21 @@ const SellTicketProvider = ({ children }) => {
     setIsFormOpen(false);
   };
 
+  const handleRemoveUploadedTicket = (selectedTicket) => {
+    axios
+      .delete(`http://localhost:3001/deleteTicket/${selectedTicket._id}`)
+      .then((response) => {
+        setTickets(
+          tickets.filter((ticket) => ticket._id !== selectedTicket._id)
+        );
+      })
+      .catch((error) => {
+        console.error("Error deleting user:", error);
+      });
+  };
+
+  const handleEditUploadedTicket = (selectedTicket) => {};
+
   return (
     <SellTicketContext.Provider
       value={{
@@ -107,6 +122,8 @@ const SellTicketProvider = ({ children }) => {
         isFormOpen,
         isLoading,
         statusMessage,
+        handleRemoveUploadedTicket,
+        handleEditUploadedTicket,
       }}
     >
       {children}
