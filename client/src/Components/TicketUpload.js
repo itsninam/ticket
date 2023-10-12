@@ -8,11 +8,15 @@ const TicketUpload = () => {
     isLoading,
     statusMessage,
     handleRemoveUploadedTicket,
-    handleEditUploadedTicket,
+    handleEditUploadForm,
   } = useContext(SellTicketContext);
 
   if (isLoading) {
     return <LoadingSpinner />;
+  }
+
+  if (!tickets.length) {
+    return <p>No tickets found</p>;
   }
 
   return (
@@ -26,9 +30,7 @@ const TicketUpload = () => {
               <button onClick={() => handleRemoveUploadedTicket(ticket)}>
                 delete
               </button>
-              <button onClick={() => handleEditUploadedTicket(ticket)}>
-                edit
-              </button>
+              <button onClick={() => handleEditUploadForm(ticket)}>edit</button>
             </li>
           );
         })}

@@ -21,6 +21,7 @@ const SellTicketProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [statusMessage, setStatusMessage] = useState("");
   const [ticketAdded, setTicketAdded] = useState(false);
+  const [editTicket, setEditTicket] = useState(false);
 
   const handleAddTicketSubmit = (event) => {
     event.preventDefault();
@@ -88,6 +89,8 @@ const SellTicketProvider = ({ children }) => {
 
   const handleOpenForm = () => {
     setIsFormOpen(true);
+    setEditTicket(false);
+    setUserInput(userInputInitialValues);
   };
 
   const handleCloseForm = () => {
@@ -98,6 +101,8 @@ const SellTicketProvider = ({ children }) => {
     axios
       .delete(`http://localhost:3001/deleteTicket/${selectedTicket._id}`)
       .then((response) => {
+        setStatusMessage("Your events will appear here");
+
         setTickets(
           tickets.filter((ticket) => ticket._id !== selectedTicket._id)
         );
@@ -107,7 +112,38 @@ const SellTicketProvider = ({ children }) => {
       });
   };
 
-  const handleEditUploadedTicket = (selectedTicket) => {};
+  const handleEditUploadForm = (selectedTicket) => {
+    const values = {
+      eventName: selectedTicket.eventName,
+      eventCity: selectedTicket.eventCity,
+      eventCountry: selectedTicket.eventCountry,
+      eventPrice: selectedTicket.eventPrice,
+      eventDate: selectedTicket.eventDate,
+      id: selectedTicket._id,
+    };
+
+    setUserInput(values);
+    setIsFormOpen(true);
+    setEditTicket(true);
+  };
+
+  const handleEditUploadedTicket = (selectedTicket) => {
+    const updatedTickets = tickets.map((ticket) => {
+      if (ticket._id === selectedTicket.id) {
+        return {
+          eventName: userInput.eventName,
+          eventCity: userInput.eventCity,
+          eventCountry: userInput.eventCountry,
+          eventPrice: userInput.eventPrice,
+          eventDate: userInput.eventDate,
+        };
+      }
+      return ticket;
+    });
+
+    setTickets(updatedTickets);
+    setIsFormOpen(false);
+  };
 
   return (
     <SellTicketContext.Provider
@@ -124,6 +160,8 @@ const SellTicketProvider = ({ children }) => {
         statusMessage,
         handleRemoveUploadedTicket,
         handleEditUploadedTicket,
+        handleEditUploadForm,
+        editTicket,
       }}
     >
       {children}

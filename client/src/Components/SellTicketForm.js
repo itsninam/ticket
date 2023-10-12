@@ -10,11 +10,13 @@ const SellTicket = () => {
     handleInputChange,
     userInput,
     handleCloseForm,
+    editTicket,
+    handleEditUploadedTicket,
   } = useContext(SellTicketContext);
 
   return (
     <div className="form-container">
-      <form onSubmit={handleAddTicketSubmit} className="sell-ticket-form">
+      <form className="sell-ticket-form">
         <Input
           htmlFor="eventName"
           labelText="Event Name"
@@ -71,7 +73,20 @@ const SellTicket = () => {
         />
 
         <div className="buttons-container">
-          <ActionBtn buttonText="Submit" type="submit" />
+          {editTicket ? (
+            <ActionBtn
+              buttonText="Edit"
+              type="button"
+              onClick={() => handleEditUploadedTicket(userInput)}
+            />
+          ) : (
+            <ActionBtn
+              buttonText="Submit"
+              type="submit"
+              onClick={handleAddTicketSubmit}
+            />
+          )}
+
           <ActionBtn
             buttonText="Cancel"
             type="button"
