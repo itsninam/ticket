@@ -101,7 +101,9 @@ const SellTicketProvider = ({ children }) => {
     axios
       .delete(`http://localhost:3001/deleteTicket/${selectedTicket._id}`)
       .then((response) => {
-        setStatusMessage("Your events will appear here");
+        if (!response.data.length) {
+          setStatusMessage("Your events will appear here");
+        }
 
         setTickets(
           tickets.filter((ticket) => ticket._id !== selectedTicket._id)
