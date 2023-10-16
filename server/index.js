@@ -45,6 +45,31 @@ app.delete("/deleteTicket/:id", async (req, res) => {
   }
 });
 
+app.put("/updateTicket/:id", async (req, res) => {
+  try {
+    const ticketId = req.params.id;
+    const updateData = req.body;
+
+    const existingTicket = await TicketModel.findById(ticketId);
+
+    if (!existingTicket) {
+      return res.status(404).json("Ticket not found");
+    }
+
+    const updatedTicket = await TicketModel.findByIdAndUpdate(
+      ticketId,
+      updateData,
+      {
+        new: true,
+      }
+    );
+
+    res.json(updatedTicket);
+  } catch (err) {
+    res.status(500).json("Internal error");
+  }
+});
+
 app.listen(3001, () => {
   console.log("Server running");
 });

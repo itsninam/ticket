@@ -128,21 +128,40 @@ const SellTicketProvider = ({ children }) => {
   };
 
   const handleEditUploadedTicket = (selectedTicket) => {
-    const updatedTickets = tickets.map((ticket) => {
-      if (ticket._id === selectedTicket.id) {
-        return {
-          eventName: userInput.eventName,
-          eventCity: userInput.eventCity,
-          eventCountry: userInput.eventCountry,
-          eventPrice: userInput.eventPrice,
-          eventDate: userInput.eventDate,
-        };
-      }
-      return ticket;
-    });
+    const updatedTicket = {
+      eventName: userInput.eventName,
+      eventCity: userInput.eventCity,
+      eventCountry: userInput.eventCountry,
+      eventPrice: userInput.eventPrice,
+      eventDate: userInput.eventDate,
+    };
 
-    setTickets(updatedTickets);
-    setIsFormOpen(false);
+    axios
+      .put(
+        `http://localhost:3001/updateTicket/${selectedTicket.id}`,
+        updatedTicket
+      )
+      .then((response) => {
+        const updatedTickets = tickets.map((ticket) => {
+          if (ticket._id === selectedTicket.id) {
+            return {
+              eventName: userInput.eventName,
+              eventCity: userInput.eventCity,
+              eventCountry: userInput.eventCountry,
+              eventPrice: userInput.eventPrice,
+              eventDate: userInput.eventDate,
+              _id: selectedTicket.id,
+            };
+          }
+          return ticket;
+        });
+
+        setTickets(updatedTickets);
+        setIsFormOpen(false);
+      })
+      .catch((error) => {
+        console.error("Error updating ticket:", error);
+      });
   };
 
   return (
