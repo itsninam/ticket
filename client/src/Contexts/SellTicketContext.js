@@ -44,9 +44,7 @@ const SellTicketProvider = ({ children }) => {
         }
 
         if (response.status === 200) {
-          // setTickets([...tickets, newTicket]);
           setUserInput({ ...userInputInitialValues });
-          setStatusMessage("");
           setTicketAdded(true);
         }
       })
@@ -80,6 +78,8 @@ const SellTicketProvider = ({ children }) => {
         setStatusMessage("Something went wrong with finding events");
         setIsLoading(false);
       });
+
+    setTicketAdded(false);
   }, [ticketAdded]);
 
   const handleInputChange = (event) => {
@@ -101,13 +101,13 @@ const SellTicketProvider = ({ children }) => {
     axios
       .delete(`http://localhost:3001/deleteTicket/${selectedTicket._id}`)
       .then((response) => {
-        if (!response.data.length) {
-          setStatusMessage("Your events will appear here");
-        }
-
         setTickets(
           tickets.filter((ticket) => ticket._id !== selectedTicket._id)
         );
+
+        if (!response.data.length) {
+          setStatusMessage("Your events will appear here");
+        }
       })
       .catch((error) => {
         console.error("Error deleting user:", error);

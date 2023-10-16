@@ -16,12 +16,11 @@ const TicketUpload = () => {
   }
 
   if (!tickets.length) {
-    return <p>No tickets found</p>;
+    return <p>{statusMessage}</p>;
   }
 
   return (
     <>
-      <p>{statusMessage}</p>
       <ul>
         {tickets.map((ticket) => {
           return (
