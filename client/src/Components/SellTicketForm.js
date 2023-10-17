@@ -16,7 +16,7 @@ const SellTicket = () => {
 
   return (
     <div className="form-container">
-      <form className="sell-ticket-form">
+      <form className="sell-ticket-form" onSubmit={handleAddTicketSubmit}>
         <Input
           htmlFor="eventName"
           labelText="Event Name"
@@ -80,11 +80,7 @@ const SellTicket = () => {
               onClick={() => handleEditUploadedTicket(userInput)}
             />
           ) : (
-            <ActionBtn
-              buttonText="Submit"
-              type="submit"
-              onClick={handleAddTicketSubmit}
-            />
+            <ActionBtn buttonText="Submit" type="submit" />
           )}
 
           <ActionBtn
